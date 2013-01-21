@@ -5,7 +5,7 @@ require arago-base-tisdk-image.bb
 
 IMAGE_INSTALL += "\
     task-arago-test \
-    task-arago-tisdk-graphics \
+    ${@base_conditional('SUPPORTS_SGX', 'YES', 'task-arago-tisdk-graphics', '', d)} \
     task-arago-tisdk-qte \
     task-arago-tisdk-addons \
     task-arago-tisdk-connectivity \
