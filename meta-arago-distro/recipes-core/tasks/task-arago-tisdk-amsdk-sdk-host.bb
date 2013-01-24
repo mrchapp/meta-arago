@@ -1,7 +1,7 @@
 DESCRIPTION = "Task to install additional scripts and applications into the SDK"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r1"
+PR = "r2"
 
 inherit task
 
@@ -12,6 +12,9 @@ U-BOOT_SRC = "${PREFERRED_PROVIDER_u-boot}-src"
 KERNEL_SRC = "${PREFERRED_PROVIDER_virtual/kernel}-src"
 
 TOOLS = "pinmux-utility"
+
+TOOLS_am37x-evm += "flash-utility"
+TOOLS_am3517-evm += "flash-utility"
 
 RDEPENDS_${PN} = "\
     ${TOOLS} \
