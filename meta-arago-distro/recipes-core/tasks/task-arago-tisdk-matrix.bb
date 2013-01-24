@@ -1,7 +1,7 @@
 DESCRIPTION = "Task to include Matrix v2"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r7"
+PR = "r8"
 
 inherit task
 
@@ -97,6 +97,7 @@ MATRIX_APPS_append_am180x-evm = "   \
     matrix-gui-bluetooth-demos      \
     matrix-gui-wifi-direct-demo     \
     matrix-gui-wifi-battleship-demo \
+    matrix-gui-pru-demos            \
 "
 
 RDEPENDS_${PN} = "        \
