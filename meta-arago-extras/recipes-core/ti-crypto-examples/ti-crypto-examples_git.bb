@@ -19,6 +19,7 @@ S = "${WORKDIR}/git/"
 SOURCE_DIR = "${S}/${ARMPKGARCH}"
 
 # Specify armv5te for ARM9 devices
+SOURCE_DIR_omapl137 = "${S}/armv5te"
 SOURCE_DIR_omapl138 = "${S}/armv5te"
 
 do_compile() {

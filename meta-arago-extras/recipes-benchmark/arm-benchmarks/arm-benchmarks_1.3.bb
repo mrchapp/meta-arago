@@ -14,6 +14,7 @@ SRC_URI = "git://gitorious.org/arm_benchmarks/arm_benchmarks.git;protocol=git;br
 S = "${WORKDIR}/git"
 
 PLATFORM_ARCH = "${ARMPKGARCH}"
+PLATFORM_ARCH_omapl137 = "armv5te"
 PLATFORM_ARCH_omapl138 = "armv5te"
 
 do_compile() {
