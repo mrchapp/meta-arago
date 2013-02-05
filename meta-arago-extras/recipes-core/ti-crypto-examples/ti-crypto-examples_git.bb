@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://armv5te/AES/aes_256.c;beginline=9;endline=35;md5=8edb
 SECTION = "console"
 DEPENDS += "openssl"
 
-PR = "r3"
+PR = "r4"
 
 BRANCH ?= "master"
 SRCREV = "95007ae6a4284841e624680afff8e0859f28d429"
@@ -19,6 +19,7 @@ S = "${WORKDIR}/git/"
 SOURCE_DIR = "${S}/${ARMPKGARCH}"
 
 # Specify armv5te for ARM9 devices
+SOURCE_DIR_omapl137 = "${S}/armv5te"
 SOURCE_DIR_omapl138 = "${S}/armv5te"
 
 do_compile() {

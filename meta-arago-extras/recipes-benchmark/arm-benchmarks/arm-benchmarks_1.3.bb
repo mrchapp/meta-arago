@@ -4,7 +4,7 @@ LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7aefb5e1cffc7b6a3ef18b803f957922"
 SECTION = "system"
 
-PR = "r3"
+PR = "r4"
 
 BRANCH ?= "master"
 SRCREV = "e9fbf7990e93d97e7471e509626969d244cca214"
@@ -15,6 +15,7 @@ S = "${WORKDIR}/git"
 
 PLATFORM_ARCH = "${ARMPKGARCH}"
 # Use ARCH format expected by the makefile
+PLATFORM_ARCH_omapl137 = "armv5te"
 PLATFORM_ARCH_omapl138 = "armv5te"
 
 do_compile() {
