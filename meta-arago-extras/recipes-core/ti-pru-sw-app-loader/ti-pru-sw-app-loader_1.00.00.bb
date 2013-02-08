@@ -6,9 +6,9 @@ LIC_FILES_CHKSUM = "file://interface/prussdrv.c;beginline=1;endline=47;md5=6012f
 RRECOMMENDS_${PN} = "kernel-module-uio-pru"
 PR = "r0+svnr${SRCPV}"
 
-COMPATIBLE_MACHINE = "omapl138|am180x-evm"
+COMPATIBLE_MACHINE = "omapl138"
 
-SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;proto=https;user=anonymous;pswd=''"
+SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;protocol=https;user=anonymous;pswd=''"
 
 SRCREV = "33"
 S = "${WORKDIR}/trunk/app_loader"

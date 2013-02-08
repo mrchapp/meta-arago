@@ -8,7 +8,7 @@ PR = "r0+svnr${SRCPV}"
 
 COMPATIBLE_MACHINE = "am180x-evm"
 
-SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;proto=https;user=anonymous;pswd=''"
+SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;protocol=https;user=anonymous;pswd=''"
 
 SRCREV = "33"
 S = "${WORKDIR}/trunk"

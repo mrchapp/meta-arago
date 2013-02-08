@@ -14,7 +14,7 @@ COMPATIBLE_MACHINE = "omapl138"
 MACHINE_KERNEL_PR_append = "a+svnr${SRCPV}"
 PR = "${MACHINE_KERNEL_PR}"
 
-SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;proto=https;user=anonymous;pswd=''"
+SRC_URI = "svn://gforge.ti.com/svn/pru_sw/;module=trunk;protocol=https;user=anonymous;pswd=''"
 
 SRCREV = "33"
 S = "${WORKDIR}/trunk/peripheral_lib/edma_driver/interface"
