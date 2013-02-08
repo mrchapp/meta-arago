@@ -75,7 +75,7 @@ do_sdk_image[cleandirs] += "${S}"
 
 # Call the cleanup_host_packes to remove packages that should be removed from
 # the host for various reasons.  This may include licensing issues as well.
-OPKG_POSTPROCESS_COMMANDS = "cleanup_host_packages; cleanup_toolchain_packages; "
+OPKG_POSTPROCESS_COMMANDS = "cleanup_host_packages; "
 
 # List of packages to remove from the SDK host package set
 HOST_CLEANUP_PACKAGES ?= ""
@@ -488,10 +488,10 @@ echo "
 # Generate the TI SW Manifest for the SDK image
 generate_sw_manifest() {
     sw_manifest_header
-    sw_manifest_toolchain_host
+    #sw_manifest_toolchain_host
     sw_manifest_target
     sw_manifest_host
-    sw_manifest_toolchain_target
+    #sw_manifest_toolchain_target
     sw_manifest_footer
 }
 
@@ -507,8 +507,8 @@ do_sdk_image () {
 
     # Extract the toolchain SDK here so that it will be available when the
     # OPKG_POSTPROCESS_COMMANDS are run
-    tar xjf ${DEPLOY_DIR}/sdk/${SDK_NAME}-${ARMPKGARCH}-${TARGET_OS}-tisdk-${SDK_ARCH}* -C ${IMAGE_ROOTFS}/
-    mv ${IMAGE_ROOTFS}/${SDK_NAME} ${IMAGE_ROOTFS}/${TISDK_TOOLCHAIN_PATH}
+    #tar xjf ${DEPLOY_DIR}/sdk/${SDK_NAME}-${ARMPKGARCH}-${TARGET_OS}-tisdk-${SDK_ARCH}* -C ${IMAGE_ROOTFS}/
+    #mv ${IMAGE_ROOTFS}/${SDK_NAME} ${IMAGE_ROOTFS}/${TISDK_TOOLCHAIN_PATH}
 
     # Creat the base SDK image
 	rootfs_${IMAGE_PKGTYPE}_do_rootfs
