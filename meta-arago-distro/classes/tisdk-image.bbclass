@@ -1,4 +1,4 @@
-inherit rootfs_ipk
+inherit sdk_rootfs_ipk
 inherit image_types
 
 # This defines the list of features that we want to include in the SDK
@@ -590,7 +590,7 @@ do_sdk_image () {
 }
 
 license_create_manifest() {
-    // Override license_create_manifest and do nothing
+    # Override license_create_manifest and do nothing
     echo ""
 }
 
