@@ -9,7 +9,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 # Choose the kernel and u-boot recipe sources to use
 
-U-BOOT_SRC = "u-boot-src"
+U-BOOT_SRC  = "u-boot-src"
 KERNEL_SRC := "${PREFERRED_PROVIDER_virtual/kernel}-src"
 
 TOOLS = "pinmux-utility"

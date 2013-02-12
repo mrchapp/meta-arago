@@ -7,6 +7,7 @@ SRC_URI = "file://LICENSE"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d9fb2a547cd8e6bb75c0ecf427a139a9"
 
 inherit allarch
+
 CREATE_SRCIPK = "1"
 SRCIPK_INSTALL_DIR = "board-support/board-port-labs"
 

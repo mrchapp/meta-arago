@@ -129,9 +129,9 @@ sourceipk_do_create_srcipk() {
         # Copy sources for packaging
         mkdir -p $tmp_dir/${SRCIPK_INSTALL_DIR}
         if [ -e ${SRCIPK_SRC_DIR} ]; then
-	    if [ "${SRCIPK_SRC_DIR}" = "${WORKDIR}" ]; then
-		excludes='--exclude ./temp --exclude ./sourceipk-tmp --exclude ./sourceipk-data'
-	    fi
+            if [ "${SRCIPK_SRC_DIR}" = "${WORKDIR}" ]; then
+                excludes='--exclude ./temp --exclude ./sourceipk-tmp --exclude ./sourceipk-data'
+            fi
             tar -C ${SRCIPK_SRC_DIR} -cO $excludes . | tar -C $tmp_dir/${SRCIPK_INSTALL_DIR} -xpf -
         fi
 

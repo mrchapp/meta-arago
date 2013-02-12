@@ -5,7 +5,7 @@ TOOLCHAIN_CLEANUP_PACKAGES ?= ""
 
 require recipes-core/meta/meta-toolchain.bb
 
-PR = "r18"
+PR = "r19"
 
 SDKTARGETSYSROOT = "${SDKPATH}/${ARAGO_TARGET_SYS}"
 
@@ -77,7 +77,7 @@ fakeroot create_sdk_files() {
 	# Add version information
 	toolchain_create_sdk_version ${SDK_OUTPUT}/${SDKPATH}/version-${REAL_MULTIMACH_TARGET_SYS}
 
-	cp ${ARAGOBASE}/scripts2/relocate_sdk.py ${SDK_OUTPUT}/${SDKPATH}/
+	cp ${ARAGOBASE}/arago-scripts/relocate_sdk.py ${SDK_OUTPUT}/${SDKPATH}/
 
 	# Replace the ##DEFAULT_INSTALL_DIR## with the correct pattern.
 	# Escape special characters like '+' and '.' in the SDKPATH
@@ -88,24 +88,22 @@ fakeroot create_sdk_files() {
 # Remove undesired packages that may be pulled into the toolchain by -dev
 # package dependencies.  This is usually GPLv3 components.
 cleanup_toolchain_packages() {
-    if [ "${TOOLCHAIN_CLEANUP_PACKAGES}" != "" ]
-    then
-        # Clean up the native side of the toolchain
-        opkg_dir="${SDK_OUTPUT}/${SDKPATH}/"
-        opkg_conf="${opkg_dir}/etc/opkg-sdk.conf"
-        opkg-cl -o $opkg_dir -f $opkg_conf --force-depends remove ${TOOLCHAIN_CLEANUP_PACKAGES}
+	if [ "${TOOLCHAIN_CLEANUP_PACKAGES}" != "" ]
+	then
+		# Clean up the native side of the toolchain
+		opkg_dir="${SDK_OUTPUT}/${SDKPATH}/"
+		opkg_conf="${opkg_dir}/etc/opkg-sdk.conf"
+		opkg-cl -o $opkg_dir -f $opkg_conf --force-depends remove ${TOOLCHAIN_CLEANUP_PACKAGES}
 
-        # Clean up the target side of the toolchain
-        opkg_dir="${SDK_OUTPUT}/${SDKTARGETSYSROOT}"
-        opkg_conf="${opkg_dir}/etc/opkg.conf"
-        opkg-cl -o $opkg_dir -f $opkg_conf --force-depends remove ${TOOLCHAIN_CLEANUP_PACKAGES}
+		# Clean up the target side of the toolchain
+		opkg_dir="${SDK_OUTPUT}/${SDKTARGETSYSROOT}"
+		opkg_conf="${opkg_dir}/etc/opkg.conf"
+		opkg-cl -o $opkg_dir -f $opkg_conf --force-depends remove ${TOOLCHAIN_CLEANUP_PACKAGES}
 
-        # Clean up empty directories from cleaned up packages
-        find ${SDK_OUTPUT} -depth -type d -empty -print0 | xargs -r0 /bin/rmdir
-    fi
+		# Clean up empty directories from cleaned up packages
+		find ${SDK_OUTPUT} -depth -type d -empty -print0 | xargs -r0 /bin/rmdir
+	fi
 }
-
-
 
 fakeroot tar_sdk() {
 
@@ -228,7 +226,7 @@ if [ "$dl_path" = "" ] ; then
 	echo "SDK could not be set up. Relocate script unable to find ld-linux.so. Abort!"
 	exit 1
 fi
-executable_files=$($SUDO_EXEC find $native_sysroot ! -name "${ARAGO_TARGET_SYS}-*" -type f -perm +111)
+executable_files=$($SUDO_EXEC find $native_sysroot -path $native_sysroot/libexec/gcc/${ARAGO_TARGET_SYS} -prune -o ! -name "${ARAGO_TARGET_SYS}-*" -type f -perm +111 -print)
 gdb_files=$($SUDO_EXEC find $native_sysroot -name "${ARAGO_TARGET_SYS}-gdb*" -type f -perm +111)
 $SUDO_EXEC ${env_setup_script%/*}/relocate_sdk.py $target_sdk_dir $dl_path $executable_files $gdb_files
 if [ $? -ne 0 ]; then
