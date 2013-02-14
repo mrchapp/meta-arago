@@ -30,7 +30,7 @@ MACHINE_KERNEL_PR_append = "h+gitr${SRCPV}"
 BRANCH = "v3.2-staging"
 
 #This SRCREV corresponds to tag v3.2_AM335xPSP_04.06.00.09-rc2
-SRCREV = "b701b5e2e6c09b8d19bc706af3af85a11018fd23"
+SRCREV = "${AUTOREV}"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
