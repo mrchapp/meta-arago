@@ -1,5 +1,5 @@
 #
-# external Arago eglibc specific configuration
+# external Linaro eglibc specific configuration
 #
 
 LIBCEXTENSION = "${@['', '-gnu'][(d.getVar('ABIEXTENSION', True) or '') != '']}"
@@ -8,10 +8,10 @@ LIBCEXTENSION = "${@['', '-gnu'][(d.getVar('ABIEXTENSION', True) or '') != '']}"
 LIBCOVERRIDE = ":libc-glibc"
 OVERRIDES .= "${LIBCOVERRIDE}"
 
-PREFERRED_PROVIDER_virtual/libiconv ?= "external-arago-toolchain"
-PREFERRED_PROVIDER_virtual/libintl ?= "external-arago-toolchain"
-PREFERRED_PROVIDER_virtual/libc ?= "external-arago-toolchain"
-PREFERRED_PROVIDER_virtual/libc-locale ?= "external-arago-toolchain"
+PREFERRED_PROVIDER_virtual/libiconv ?= "external-linaro-toolchain"
+PREFERRED_PROVIDER_virtual/libintl ?= "external-linaro-toolchain"
+PREFERRED_PROVIDER_virtual/libc ?= "external-linaro-toolchain"
+PREFERRED_PROVIDER_virtual/libc-locale ?= "external-linaro-toolchain"
 
 PREFERRED_PROVIDER_virtual/nativesdk-libiconv ?= "nativesdk-eglibc"
 PREFERRED_PROVIDER_virtual/nativesdk-libintl ?= "nativesdk-eglibc"
