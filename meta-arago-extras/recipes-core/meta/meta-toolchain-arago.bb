@@ -55,6 +55,8 @@ toolchain_create_sdk_env_script () {
 	echo 'export OECORE_ACLOCAL_OPTS="-I $SDK_PATH/usr/share/aclocal"' >> $script
 	echo 'export OECORE_DISTRO_VERSION="${DISTRO_VERSION}"' >> $script
 	echo 'export OECORE_SDK_VERSION="${SDK_VERSION}"' >> $script
+	echo 'export PYTHONHOME=$SDK_PATH' >> $script
+	echo 'export PYTHONPATH=lib/python2.7' >> $script
 }
 
 populate_sdk_ipk_append () {
