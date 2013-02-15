@@ -5,7 +5,7 @@ TOOLCHAIN_CLEANUP_PACKAGES ?= ""
 
 require recipes-core/meta/meta-toolchain.bb
 
-PR = "r19"
+PR = "r20"
 
 SDKTARGETSYSROOT = "${SDKPATH}/${ARAGO_TARGET_SYS}"
 
@@ -57,11 +57,31 @@ toolchain_create_sdk_env_script () {
 	echo 'export OECORE_SDK_VERSION="${SDK_VERSION}"' >> $script
 }
 
+create_shell_stub () {
+	i=$1
+	mv $i $i.real
+	printf "#!/bin/bash\nif [ -n \x22\x24BASH_SOURCE\x22 ]; then\n" > $i
+	printf "\tfilename\x3D\x60echo \x24\x7BBASH_SOURCE\x23\x23\x2A\x2F\x7D\x60\n" >> $i
+	printf "\tdirname\x3D\x24\x7BBASH_SOURCE\x2F\x25\x24filename\x2F\x7D\n" >> $i
+	printf "\t\x2E \x24dirname\x2E\x2E\x2Fenvironment-setup\n" >> $i
+	printf "fi\n" >> $i
+
+	if [ "$2" == "yes" ]; then
+		echo 'export PYTHONHOME=$SDK_PATH' >> $i
+		echo 'export PYTHONPATH=lib/python2.7' >> $i
+	fi
+	printf "LD_LIBRARY_PATH=\x24SDK_PATH/lib:\x24LD_LIBRARY_PATH \x24SDK_PATH/lib/ld-linux.so.2 \x24SDK_PATH/bin/$i.real \x24\x2a\n" >> $i
+	chmod +x $i
+}
+
 populate_sdk_ipk_append () {
 	# Remove broken .la files
 	for i in `find ${SDK_OUTPUT}/${SDKPATH} -name \*.la`; do
 		rm -f $i
 	done
+
+	cd ${SDK_OUTPUT}/${SDKPATH}/bin
+	${@base_conditional('PREFERRED_PROVIDER_gdb-cross-canadian-arm', 'external-arago-sdk-toolchain', '', 'create_shell_stub ${TARGET_PREFIX}gdb yes', d)}
 
 	cleanup_toolchain_packages
 
