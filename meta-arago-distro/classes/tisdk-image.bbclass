@@ -1,4 +1,4 @@
-inherit sdk_rootfs_ipk
+inherit rootfs_ipk
 inherit image_types
 
 # This defines the list of features that we want to include in the SDK
