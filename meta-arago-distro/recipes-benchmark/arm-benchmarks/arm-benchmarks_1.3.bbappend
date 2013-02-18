@@ -1,3 +1,3 @@
 PR_append = "-arago0"
 
-SRCIPK_SRC_DIR = "${WORKDIR}/git/${PLATFORM_ARCH}"
+SRCIPK_SRC_DIR = "${S}/${PLATFORM_ARCH}"
