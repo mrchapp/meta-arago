@@ -30,7 +30,7 @@ SRC_URI = "\
     file://Makefile_wireless \
 "
 
-PR = "r5"
+PR = "r6"
 
 MAKEFILES_COMMON = "linux \
                     matrix-gui \
@@ -41,22 +41,23 @@ MAKEFILES_COMMON = "linux \
                     refresh-screen \
                     qt-tstat \
 "
+MAKEFILES = ""
 
 # Add device specific make targets
-MAKEFILES_omap3 += "u-boot-spl \
+MAKEFILES_append_omap3 = " u-boot-spl \
                     quick-playground \
 "
-MAKEFILES_am37x-evm += "av-examples \
+MAKEFILES_append_am37x-evm = " av-examples \
                         ti-ocf-crypto-module \
                         wireless \
 "
-MAKEFILES_am3517-evm += "av-examples \
+MAKEFILES_append_am3517-evm = " av-examples \
                          ti-ocf-crypto-module \
 "
-MAKEFILES_ti33x += "u-boot-spl \
+MAKEFILES_append_ti33x = " u-boot-spl \
                     quick-playground wireless \
 "
-MAKEFILES_am180x-evm += "pru \
+MAKEFILES_append_am180x-evm = " pru \
                          u-boot-legacy \
                          wireless \
 "
