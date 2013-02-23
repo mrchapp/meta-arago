@@ -8,24 +8,13 @@ DEFAULT_PREFERENCE = "-1"
 
 inherit kernel
 
-###################################################
-# When this recipe is moved to meta-ti these changes should go in a bbappend in meta-arago-distro.
-# Also the currently used defconfig should stay in meta-arago-distro and a completely working defconfig
-# should be used in meta-ti
-# KVER is used by arago-source-ipk.conf
-KVER = "${PV}"
-
-require copy-defconfig.inc
-require setup-defconfig.inc
-###################################################
-
 # Stage the power management firmware before building the kernel
 DEPENDS += "am33x-cm3"
 
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "i+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "j+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
