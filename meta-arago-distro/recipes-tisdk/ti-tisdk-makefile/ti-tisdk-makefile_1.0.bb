@@ -17,7 +17,6 @@ SRC_URI = "\
     file://Makefile_u-boot-legacy \
     file://Makefile_matrix-gui \
     file://Makefile_arm-benchmarks \
-    file://Makefile_ti-crypto-examples \
     file://Makefile_am-sysinfo \
     file://Makefile_av-examples \
     file://Makefile_u-boot-spl \
@@ -30,12 +29,11 @@ SRC_URI = "\
     file://Makefile_wireless \
 "
 
-PR = "r6"
+PR = "r7"
 
 MAKEFILES_COMMON = "linux \
                     matrix-gui \
                     arm-benchmarks \
-                    ti-crypto-examples \
                     am-sysinfo \
                     matrix-gui-browser \
                     refresh-screen \
