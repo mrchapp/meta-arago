@@ -1,0 +1,93 @@
+From 571eca4216c678f8e5df618bb76861b0e3a87d38 Mon Sep 17 00:00:00 2001
+From: Steve Kipisz <s-kipisz2@ti.com>
+Date: Sat, 23 Feb 2013 12:02:54 -0600
+Subject: [PATCH 3/4] am335x_evm:fix mmc boot environment settings
+
+Original patch from arago-project.org u-boot-am33x
+From 3fdd541db2ad8202476ba2c5ef22ab034c85618d Mon Sep 17 00:00:00 2001
+From: Chase Maupin <Chase.Maupin@ti.com>
+Date: Mon, 5 Nov 2012 15:13:05 -0600
+Subject: [PATCH] am335x_evm: fix mmc boot environment settings
+
+* Fixed the MMC boot environment settings to try first loading
+  the uImage from the FAT partition instead of the ext2 partition.
+* Changed to load the kernel image a kloadaddr to avoid the need
+  to relocate the kernel image during boot.
+* Added ip_method to mmcargs
+* Use bootargs_defaults to set common variables
+
+Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
+Signed-off-by: Tom Rini <trini@ti.com>
+
+Signed-off-by: Steve Kipisz <s-kipisz2@ti.com>
+---
+ include/configs/am335x_evm.h |   25 +++++++++++++++++--------
+ 1 files changed, 17 insertions(+), 8 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 12e1959..c4482df 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -53,10 +53,11 @@
+ #define CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"loadaddr=0x80200000\0" \
++	"kloadaddr=0x80007fc0\0" \
+ 	"fdtaddr=0x80F80000\0" \
+ 	"fdt_high=0xffffffff\0" \
+ 	"rdaddr=0x81000000\0" \
+-	"bootfile=/boot/uImage\0" \
++	"bootfile=uImage\0" \
+ 	"fdtfile=\0" \
+ 	"console=ttyO0,115200n8\0" \
+ 	"optargs=\0" \
+@@ -73,10 +74,14 @@
+ 		"::off\0" \
+ 	"ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=${rdaddr},64M\0" \
+ 	"ramrootfstype=ext2\0" \
+-	"mmcargs=setenv bootargs console=${console} " \
+-		"${optargs} " \
++	"ip_method=none\0" \
++	"bootargs_default=setenv bootargs " \
++		"console=${console} "\
++		"${optargs}\0" \
++	"mmcargs=run bootargs_defaults;" \
++		"setenv bootargs ${bootargs} " \
+ 		"root=${mmcroot} " \
+-		"rootfstype=${mmcrootfstype}\0" \
++		"rootfstype=${mmcrootfstype} ip=${ip_method}\0" \
+ 	"nandargs=setenv bootargs console=${console} " \
+ 		"${optargs} " \
+ 		"root=${nandroot} " \
+@@ -104,11 +109,11 @@
+ 		"root=${ramroot} " \
+ 		"rootfstype=${ramrootfstype}\0" \
+ 	"loadramdisk=fatload mmc ${mmcdev} ${rdaddr} ramdisk.gz\0" \
+-	"loaduimagefat=fatload mmc ${mmcdev} ${loadaddr} ${bootfile}\0" \
+-	"loaduimage=ext2load mmc ${mmcdev}:2 ${loadaddr} ${bootfile}\0" \
++	"loaduimagefat=fatload mmc ${mmcdev} ${kloadaddr} ${bootfile}\0" \
++	"loaduimage=ext2load mmc ${mmcdev}:2 ${kloadaddr} /boot/${bootfile}\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
+ 		"run mmcargs; " \
+-		"bootm ${loadaddr}\0" \
++		"bootm ${kloadaddr}\0" \
+ 	"nandboot=echo Booting from nand ...; " \
+ 		"run nandargs; " \
+ 		"nand read ${loadaddr} ${nandsrcaddr} ${nandimgsize}; " \
+@@ -147,8 +152,12 @@
+ 			"echo Running uenvcmd ...;" \
+ 			"run uenvcmd;" \
+ 		"fi;" \
+-		"if run loaduimage; then " \
++		"if run loaduimagefat; then " \
++			"run mmcboot;" \
++		"elif run loaduimage; then " \
+ 			"run mmcboot;" \
++		"else "\
++			"echo Could not find ${bootfile} ;" \
+ 		"fi;" \
+ 	"else " \
+ 		"run nandboot;" \
+-- 
+1.7.2.3
+
