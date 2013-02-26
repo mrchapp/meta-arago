@@ -1,7 +1,7 @@
 PR_append = "-arago0+gitr${SRCPV}"
 
 # Auto rev so we pick up the latest changes
-#SRCREV = "${AUTOREV}"
+SRCREV = "${AUTOREV}"
 
 do_compile_kmodules() {
         unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
