@@ -12,7 +12,7 @@ IMAGE_INSTALL += "\
     packagegroup-arago-tisdk-crypto \
     packagegroup-arago-tisdk-matrix \
     packagegroup-arago-tisdk-multimedia \
-    packagegroup-arago-tisdk-amsdk \
+    packagegroup-arago-tisdk-dspsdk \
 "
 
 export IMAGE_BASENAME = "tisdk-rootfs-image"
