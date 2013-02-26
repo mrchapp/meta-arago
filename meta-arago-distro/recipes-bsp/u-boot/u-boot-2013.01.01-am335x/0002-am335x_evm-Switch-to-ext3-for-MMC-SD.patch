@@ -1,0 +1,37 @@
+From 5cb3872ee1251e651c08debd101466d6e51a7bac Mon Sep 17 00:00:00 2001
+From: Steve Kipisz <s-kipisz2@ti.com>
+Date: Sat, 23 Feb 2013 11:16:34 -0600
+Subject: [PATCH 2/4] am335x_evm:Switch to ext3 for MMC SD
+
+This patch originated in arago-project.org u-boot-am33x
+
+From a142e05ebe2e6eec1294c26dffbf5824a1f99d72 Mon Sep 17 00:00:00 2001
+From: Tom Rini <trini@ti.com>
+Date: Fri, 2 Nov 2012 09:38:48 -0700
+Subject: [PATCH] am335x_evm: Switch to ext3 for MMC/SD
+
+This is TI Sitara SDK specific change (we use ext3 for all SD cards).
+
+Signed-off-by: Tom Rini <trini@ti.com>
+
+Signed-off-by: Steve Kipisz <s-kipisz2@ti.com>
+---
+ include/configs/am335x_evm.h |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 947784b..12e1959 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -62,7 +62,7 @@
+ 	"optargs=\0" \
+ 	"mmcdev=0\0" \
+ 	"mmcroot=/dev/mmcblk0p2 ro\0" \
+-	"mmcrootfstype=ext4 rootwait\0" \
++	"mmcrootfstype=ext3 rootwait\0" \
+ 	"nandroot=ubi0:rootfs rw ubi.mtd=7,2048\0" \
+ 	"nandrootfstype=ubifs rootwait=1\0" \
+ 	"nandsrcaddr=0x280000\0" \
+-- 
+1.7.2.3
+
