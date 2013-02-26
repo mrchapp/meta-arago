@@ -1,6 +1,6 @@
 DESCRIPTION = "Task to install additional packages only used in the Arago SDK"
 LICENSE = "MIT"
-PR = "r4"
+PR = "r1"
 
 inherit packagegroup
 
@@ -9,13 +9,10 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 # Out of Box Experience (OOBE)
 OOBE = ""
 
-OOBE_ti33x += "\
-    gadget-init \
-    parse-ip \
-"
-
 EXTRA_APPLICATIONS = "\
-    screenshot \
+    streamapp \
+    gst-plugin-tipafsink \
+    ti-dsplink-module \
 "
 
 RDEPENDS_${PN} = "\
