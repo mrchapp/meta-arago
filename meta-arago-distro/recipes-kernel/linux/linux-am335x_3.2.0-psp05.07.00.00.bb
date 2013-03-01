@@ -25,12 +25,12 @@ DEPENDS += "am33x-cm3"
 KERNEL_IMAGETYPE = "uImage"
 
 # The main PR is now using MACHINE_KERNEL_PR, for ti33x see conf/machine/include/ti33x.inc
-MACHINE_KERNEL_PR_append = "h+gitr${SRCPV}"
+MACHINE_KERNEL_PR_append = "i+gitr${SRCPV}"
 
 BRANCH = "v3.2-staging"
 
-#This SRCREV corresponds to tag v3.2_AM335xPSP_04.06.00.09-rc2
-SRCREV = "b701b5e2e6c09b8d19bc706af3af85a11018fd23"
+# This SRCREV corresponds to tag v3.2_AM335xPSP_04.06.00.10-rc2 
+SRCREV = "4be2ce1b85bcec765a05f3034a7eded78d6293f7"
 
 SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;branch=${BRANCH} \
            file://defconfig \
@@ -39,7 +39,7 @@ SRC_URI = "git://arago-project.org/git/projects/linux-am33x.git;protocol=git;bra
 
 S = "${WORKDIR}/git"
 
-# Allow a layer to easily add to the list of patches or completely override them.
+# Allow a layer to easily add to the list of patches or completely override them
 KERNEL_PATCHES = "${PATCHES}"
 
 # Add a set of patches that enabled features, fixed bugs or disabled buggy features
