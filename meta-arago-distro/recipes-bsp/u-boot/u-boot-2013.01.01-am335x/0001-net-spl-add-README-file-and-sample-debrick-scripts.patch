@@ -1,7 +1,7 @@
-From 40e33c5d1d5ed5ce1196c7eb83b370c5c6953c74 Mon Sep 17 00:00:00 2001
+From 97b62232638a6a12b92ddd6c574ebd4e9188facc Mon Sep 17 00:00:00 2001
 From: Steve Kipisz <s-kipisz2@ti.com>
-Date: Sat, 23 Feb 2013 11:05:14 -0600
-Subject: [PATCH 1/4] net:spl:add README file and sample debrick scripts
+Date: Thu, 28 Feb 2013 11:53:56 -0600
+Subject: [PATCH 1/5] net:spl:add README file and sample debrick scripts
 
 This patch combines
 From 013dd4fdd29d0bd2982e9e4e95d3e11092e906a3 Mon Sep 17 00:00:00 2001

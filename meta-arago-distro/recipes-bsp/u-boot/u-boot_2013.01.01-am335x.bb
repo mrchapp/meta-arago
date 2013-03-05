@@ -23,18 +23,17 @@ DEFAULT_PREFERENCE = "-1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r0+gitr${SRCPV}"
+PR = "r1+gitr${SRCPV}"
 
 SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${BRANCH} \
            file://0001-net-spl-add-README-file-and-sample-debrick-scripts.patch \
-           file://0002-am335x_evm-Switch-to-ext3-for-MMC-SD.patch \
+           file://0002-am335x_evm-switch-to-ext3-for-MMC-SD.patch \
            file://0003-am335x_evm-fix-mmc-boot-environment-settings.patch \
-           file://0004-am335x_evm-Fixup-some-configurations-and-environment.patch \
+           file://0004-am335x_evm-Add-USB-SPL-restore-flash-option.patch \
+           file://0005-am335x_evm-Add-restore-flash-target-and-PG1.0-USB-SP.patch \
 "
 
-BRANCH = "ti-u-boot-2013.01.01"
-
-SRCREV = "2460db0fc29a75f9d4cb18dbd427dc6719877aff"
+SRCREV = "72c904d29d19446bb67673a3597590e44627b194"
 
 S = "${WORKDIR}/git"
 
