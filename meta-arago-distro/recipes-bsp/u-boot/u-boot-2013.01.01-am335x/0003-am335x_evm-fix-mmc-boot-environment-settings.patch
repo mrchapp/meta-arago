@@ -1,7 +1,7 @@
-From 571eca4216c678f8e5df618bb76861b0e3a87d38 Mon Sep 17 00:00:00 2001
+From f7a3c9f56284b435cfb74316b9d0b8289c769b30 Mon Sep 17 00:00:00 2001
 From: Steve Kipisz <s-kipisz2@ti.com>
-Date: Sat, 23 Feb 2013 12:02:54 -0600
-Subject: [PATCH 3/4] am335x_evm:fix mmc boot environment settings
+Date: Thu, 28 Feb 2013 12:08:30 -0600
+Subject: [PATCH 3/5] am335x_evm:fix mmc boot environment settings
 
 Original patch from arago-project.org u-boot-am33x
 From 3fdd541db2ad8202476ba2c5ef22ab034c85618d Mon Sep 17 00:00:00 2001
@@ -18,18 +18,17 @@ Subject: [PATCH] am335x_evm: fix mmc boot environment settings
 
 Signed-off-by: Chase Maupin <Chase.Maupin@ti.com>
 Signed-off-by: Tom Rini <trini@ti.com>
-
 Signed-off-by: Steve Kipisz <s-kipisz2@ti.com>
 ---
  include/configs/am335x_evm.h |   25 +++++++++++++++++--------
  1 files changed, 17 insertions(+), 8 deletions(-)
 
 diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
-index 12e1959..c4482df 100644
+index 0ebe729..467aba8 100644
 --- a/include/configs/am335x_evm.h
 +++ b/include/configs/am335x_evm.h
-@@ -53,10 +53,11 @@
- #define CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
+@@ -54,10 +54,11 @@
+ #ifndef CONFIG_SPL_BUILD
  #define CONFIG_EXTRA_ENV_SETTINGS \
  	"loadaddr=0x80200000\0" \
 +	"kloadaddr=0x80007fc0\0" \
@@ -41,15 +40,15 @@ index 12e1959..c4482df 100644
  	"fdtfile=\0" \
  	"console=ttyO0,115200n8\0" \
  	"optargs=\0" \
-@@ -73,10 +74,14 @@
+@@ -78,10 +79,14 @@
  		"::off\0" \
  	"ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=${rdaddr},64M\0" \
  	"ramrootfstype=ext2\0" \
 -	"mmcargs=setenv bootargs console=${console} " \
 -		"${optargs} " \
 +	"ip_method=none\0" \
-+	"bootargs_default=setenv bootargs " \
-+		"console=${console} "\
++	"bootargs_defaults=setenv bootargs " \
++		"console=${console} " \
 +		"${optargs}\0" \
 +	"mmcargs=run bootargs_defaults;" \
 +		"setenv bootargs ${bootargs} " \
@@ -59,7 +58,7 @@ index 12e1959..c4482df 100644
  	"nandargs=setenv bootargs console=${console} " \
  		"${optargs} " \
  		"root=${nandroot} " \
-@@ -104,11 +109,11 @@
+@@ -109,11 +114,11 @@
  		"root=${ramroot} " \
  		"rootfstype=${ramrootfstype}\0" \
  	"loadramdisk=fatload mmc ${mmcdev} ${rdaddr} ramdisk.gz\0" \
@@ -74,7 +73,7 @@ index 12e1959..c4482df 100644
  	"nandboot=echo Booting from nand ...; " \
  		"run nandargs; " \
  		"nand read ${loadaddr} ${nandsrcaddr} ${nandimgsize}; " \
-@@ -147,8 +152,12 @@
+@@ -153,8 +158,12 @@
  			"echo Running uenvcmd ...;" \
  			"run uenvcmd;" \
  		"fi;" \
@@ -83,7 +82,7 @@ index 12e1959..c4482df 100644
 +			"run mmcboot;" \
 +		"elif run loaduimage; then " \
  			"run mmcboot;" \
-+		"else "\
++		"else " \
 +			"echo Could not find ${bootfile} ;" \
  		"fi;" \
  	"else " \
