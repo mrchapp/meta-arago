@@ -23,7 +23,7 @@ DEFAULT_PREFERENCE = "-1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r1+gitr${SRCPV}"
+PR = "r2+gitr${SRCPV}"
 
 SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git \
            file://0001-net-spl-add-README-file-and-sample-debrick-scripts.patch \
@@ -38,6 +38,9 @@ SRCREV = "72c904d29d19446bb67673a3597590e44627b194"
 S = "${WORKDIR}/git"
 
 UBOOT_SUFFIX = "img"
+
+# Compiling is failing when multiple jobs are enabled.
+PARALLEL_MAKE = ""
 
 # Set the name of the SPL that will built so that it is also packaged with u-boot.
 SPL_BINARY = "MLO"
