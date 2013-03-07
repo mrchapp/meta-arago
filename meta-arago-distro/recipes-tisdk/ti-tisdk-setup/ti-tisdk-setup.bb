@@ -4,10 +4,10 @@ LIC_FILES_CHKSUM = "file://setup.sh;beginline=3;endline=31;md5=fc4b04a33df6d892c
 
 COMPATIBLE_MACHINE = "am37x-evm|am3517-evm|beagleboard|ti33x|am180x-evm"
 
-PR = "r6"
+PR = "r7"
 
 BRANCH ?= "master"
-SRCREV = "708cff4993a472b55fb4bf96579b608bcfac1a5a"
+SRCREV = "31a6c58bc01efcbec401bd6a7777bbf3e534870d"
 SRC_URI = "git://arago-project.org/git/projects/tisdk-setup-scripts.git;protocol=git;branch=${BRANCH}"
 
 S = "${WORKDIR}/git/"
@@ -25,6 +25,7 @@ do_install () {
     install -d ${D}/bin
     install -m 0755 ${S}/common.sh ${D}/bin
     install -m 0755 ${S}/setup-host-check.sh ${D}/bin
+    install -m 0755 ${S}/add-to-group.sh ${D}/bin
     install -m 0755 ${S}/setup-minicom.sh ${D}/bin
     install -m 0755 ${S}/setup-package-install.sh ${D}/bin
     install -m 0755 ${S}/setup-targetfs-nfs.sh ${D}/bin
