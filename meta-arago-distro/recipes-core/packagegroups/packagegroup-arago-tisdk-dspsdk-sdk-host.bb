@@ -12,7 +12,7 @@ U-BOOT_SRC = "${PREFERRED_PROVIDER_virtual/bootloader}-src"
 KERNEL_SRC = "${PREFERRED_PROVIDER_virtual/kernel}-src"
 
 TOOLS = "pinmux-utility"
-TOOLS_da830-omapl137-evm = ""
+TOOLS_da830-omapl137-evm = "pinmux-utility-da830"
 TOOLS_am37x-evm_append = " flash-utility"
 TOOLS_am3517-evm_append = " flash-utility"
 
