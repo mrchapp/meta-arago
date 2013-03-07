@@ -13,6 +13,7 @@ EXTRA_APPLICATIONS = "\
     streamapp \
     gst-plugin-tipafsink \
     ti-dsplink-module \
+    pa-image-i12nonip \
 "
 
 RDEPENDS_${PN} = "\
