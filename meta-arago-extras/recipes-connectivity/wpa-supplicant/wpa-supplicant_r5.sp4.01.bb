@@ -10,12 +10,4 @@ LIC_FILES_CHKSUM = "file://../COPYING;md5=ab87f20cd7e8c0d0a6539b34d3791d0e \
 
 
 SRCREV = "ol_R5.SP4.01"
-PR = "r3+gitr${SRCPV}"
-
-SRC_URI += "file://kill_wpa_supplicant.sh "
-
-FILES_${PN} += " /usr/sbin/kill_wpa_supplicant.sh"
-
-do_install_append () {
-	install -m 755 ${WORKDIR}/kill_wpa_supplicant.sh ${D}${sbindir}
-}
+PR_append = "-a+gitr${SRCPV}"
