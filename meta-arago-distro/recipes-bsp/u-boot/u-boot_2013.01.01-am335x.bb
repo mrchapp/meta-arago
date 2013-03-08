@@ -23,7 +23,7 @@ DEFAULT_PREFERENCE = "-1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r2+gitr${SRCPV}"
+PR = "r3+gitr${SRCPV}"
 
 SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${BRANCH} \
            file://0001-net-spl-add-README-file-and-sample-debrick-scripts.patch \
@@ -33,7 +33,7 @@ SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${
            file://0005-am335x_evm-Add-restore-flash-target-and-PG1.0-USB-SP.patch \
 "
 
-SRCREV = "72c904d29d19446bb67673a3597590e44627b194"
+SRCREV = "c44c35e24b1532272118c58c57f658f21b72a4dd"
 
 S = "${WORKDIR}/git"
 
