@@ -23,9 +23,9 @@ DEFAULT_PREFERENCE = "-1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r3+gitr${SRCPV}"
+PR = "r4+gitr${SRCPV}"
 
-SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${BRANCH} \
+SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git \
            file://0001-net-spl-add-README-file-and-sample-debrick-scripts.patch \
            file://0002-am335x_evm-switch-to-ext3-for-MMC-SD.patch \
            file://0003-am335x_evm-fix-mmc-boot-environment-settings.patch \
