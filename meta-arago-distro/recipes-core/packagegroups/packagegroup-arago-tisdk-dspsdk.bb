@@ -14,6 +14,7 @@ EXTRA_APPLICATIONS = "\
     gst-plugin-tipafsink \
     ti-dsplink-module \
     pa-image-i12nonip \
+    pa-utils \
 "
 
 RDEPENDS_${PN} = "\
