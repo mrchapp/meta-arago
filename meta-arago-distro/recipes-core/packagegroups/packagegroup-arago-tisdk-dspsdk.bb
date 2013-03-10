@@ -15,6 +15,7 @@ EXTRA_APPLICATIONS = "\
     ti-dsplink-module \
     pa-image-i12nonip \
     pa-utils \
+    vinjey-audio-codecs \
 "
 
 RDEPENDS_${PN} = "\
