@@ -19,7 +19,6 @@ TOOLS_am3517-evm_append = " flash-utility"
 RDEPENDS_${PN} = "\
     ${TOOLS} \
     ti-tisdk-setup \
-    board-port-labs-src \
     ti-tisdk-makefile \
     ${U-BOOT_SRC} \
     ${KERNEL_SRC} \
