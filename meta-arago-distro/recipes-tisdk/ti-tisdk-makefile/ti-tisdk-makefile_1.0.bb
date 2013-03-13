@@ -29,7 +29,7 @@ SRC_URI = "\
     file://Makefile_wireless \
 "
 
-PR = "r7"
+PR = "r6"
 
 MAKEFILES_COMMON = "linux \
                     matrix-gui \

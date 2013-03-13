@@ -33,14 +33,11 @@ SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git \
            file://0005-am335x_evm-Add-restore-flash-target-and-PG1.0-USB-SP.patch \
 "
 
-SRCREV = "c44c35e24b1532272118c58c57f658f21b72a4dd"
+SRCREV = "49f3cef9a200614b4dad8287e2ee42f748f810c6"
 
 S = "${WORKDIR}/git"
 
 UBOOT_SUFFIX = "img"
-
-# Compiling is failing when multiple jobs are enabled.
-PARALLEL_MAKE = ""
 
 # Set the name of the SPL that will built so that it is also packaged with u-boot.
 SPL_BINARY = "MLO"
