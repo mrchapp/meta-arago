@@ -16,8 +16,16 @@ TOOLS_da830-omapl137-evm = "pinmux-utility-da830 serial-flasher"
 TOOLS_am37x-evm_append = " flash-utility"
 TOOLS_am3517-evm_append = " flash-utility"
 
+EXAMPLE_APPLICATIONS = "\
+    gst-plugin-tipafsink-src \
+    pa-image-i12nonip-src \
+    pa-utils-src \
+    streamapp-src \
+"
+
 RDEPENDS_${PN} = "\
     ${TOOLS} \
+    ${EXAMPLE_APPLICATIONS} \
     ti-tisdk-setup \
     ti-tisdk-makefile \
     ${U-BOOT_SRC} \
