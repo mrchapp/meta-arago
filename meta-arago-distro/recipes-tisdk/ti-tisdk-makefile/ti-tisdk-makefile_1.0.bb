@@ -27,6 +27,7 @@ SRC_URI = "\
     file://Makefile_qt-tstat \
     file://Makefile_quick-playground \
     file://Makefile_wireless \
+    file://Makefile_ti-crypto-examples \
 "
 
 PR = "r6"
@@ -38,6 +39,7 @@ MAKEFILES_COMMON = "linux \
                     matrix-gui-browser \
                     refresh-screen \
                     qt-tstat \
+                    ti-crypto-examples \
 "
 MAKEFILES = ""
 

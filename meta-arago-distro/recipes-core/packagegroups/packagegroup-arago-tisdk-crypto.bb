@@ -1,6 +1,6 @@
 DESCRIPTION = "Task to install crypto packages into target FS"
 LICENSE = "MIT"
-PR = "r4"
+PR = "r3"
 
 inherit packagegroup
 
@@ -12,6 +12,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 CRYPTO_SUPPORT = "\
     openssl \
     openssl-misc \
+    ti-crypto-examples \
     "
 
 # Add crypto hardware support for am37x-evm
