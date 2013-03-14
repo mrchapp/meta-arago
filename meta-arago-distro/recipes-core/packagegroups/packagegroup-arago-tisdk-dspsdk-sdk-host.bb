@@ -23,8 +23,20 @@ EXAMPLE_APPLICATIONS = "\
     streamapp-src \
 "
 
+DSPDEVKIT = "\
+    ti-cgt6x-src \
+    ti-dsplink-src \
+    ti-edma3lld-src \
+    ti-fastmath67x-src \
+    ti-ipc-src \
+    ti-sysbios-src \
+    ti-xdais-src \
+    ti-xdctools-src \
+"
+
 RDEPENDS_${PN} = "\
     ${TOOLS} \
+    ${DSPDEVKIT} \
     ${EXAMPLE_APPLICATIONS} \
     ti-tisdk-setup \
     ti-tisdk-makefile \
