@@ -18,4 +18,5 @@ RDEPENDS_${PN} = "\
     u-boot \
     arago-gpl-notice \
     nfs-utils-client \
+    ubl-arm \
     "
