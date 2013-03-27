@@ -17,6 +17,7 @@ SRC_URI = "\
     file://Makefile_u-boot-legacy \
     file://Makefile_matrix-gui \
     file://Makefile_arm-benchmarks \
+    file://Makefile_ti-crypto-examples \
     file://Makefile_am-sysinfo \
     file://Makefile_av-examples \
     file://Makefile_u-boot-spl \
@@ -27,10 +28,9 @@ SRC_URI = "\
     file://Makefile_qt-tstat \
     file://Makefile_quick-playground \
     file://Makefile_wireless \
-    file://Makefile_ti-crypto-examples \
 "
 
-PR = "r6"
+PR = "r7"
 
 MAKEFILES_COMMON = "linux \
                     matrix-gui \
@@ -39,7 +39,6 @@ MAKEFILES_COMMON = "linux \
                     matrix-gui-browser \
                     refresh-screen \
                     qt-tstat \
-                    ti-crypto-examples \
 "
 MAKEFILES = ""
 
@@ -56,6 +55,7 @@ MAKEFILES_append_am3517-evm = " av-examples \
 "
 MAKEFILES_append_ti33x = " u-boot-spl \
                     quick-playground wireless \
+                    ti-crypto-examples \
 "
 MAKEFILES_append_am180x-evm = " pru \
                          u-boot-legacy \

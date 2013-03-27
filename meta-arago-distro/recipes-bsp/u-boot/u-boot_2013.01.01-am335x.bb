@@ -16,24 +16,21 @@ COMPATIBLE_MACHINE = "ti33x|omap3"
 
 # PSPREL and UVER are used by arago-source-ipk.conf
 PSPREL = "05.07.00.00"
-UVER = "2013.10"
-###################################################
+UVER = "2013.01.01"
 
 DEFAULT_PREFERENCE = "-1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r4+gitr${SRCPV}"
+PR = "r5+gitr${SRCPV}"
 
-SRC_URI = "git://gitorious.ti.com/ti-u-boot/ti-u-boot.git;protocol=git \
-           file://0001-net-spl-add-README-file-and-sample-debrick-scripts.patch \
-           file://0002-am335x_evm-switch-to-ext3-for-MMC-SD.patch \
-           file://0003-am335x_evm-fix-mmc-boot-environment-settings.patch \
-           file://0004-am335x_evm-Add-USB-SPL-restore-flash-option.patch \
-           file://0005-am335x_evm-Add-restore-flash-target-and-PG1.0-USB-SP.patch \
+SRC_URI = "git://git.ti.com/ti-u-boot/ti-u-boot.git;protocol=git;branch=${BRANCH} \
 "
 
-SRCREV = "49f3cef9a200614b4dad8287e2ee42f748f810c6"
+BRANCH = "ti-u-boot-2013.01.01-amsdk-05.07.00.00"
+
+# Commit corresponds to tag "v2013.01.01_amsdk-05.07.00.00"
+SRCREV = "8eb15a787c558fee98b0fa2a66ff0849c732edcc"
 
 S = "${WORKDIR}/git"
 

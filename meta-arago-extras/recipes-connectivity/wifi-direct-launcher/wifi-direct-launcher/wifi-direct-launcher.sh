@@ -5,5 +5,9 @@ if [ $StationRunning -eq 2 ]; then
         killall wpa_supplicant
 fi
 
+# Correct dbus permission. Incorrect permission causes dbus (wifi direct demos)
+# dependent demos to fail. 
+chmod u+s /usr/libexec/dbus-daemon-launch-helper
+
 # start the application
 $*
