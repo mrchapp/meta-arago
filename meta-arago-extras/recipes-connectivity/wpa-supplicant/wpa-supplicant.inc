@@ -13,7 +13,7 @@ RRECOMMENDS_${PN} = "wpa-supplicant-passphrase wpa-supplicant-cli"
 # wpa-supplicant the DEFAULT_PREFERENCE will be set to -1.
 DEFAULT_PREFERENCE = "-1"
 
-PR = "r4"
+PR = "r5"
 
 SRC_URI = "git://github.com/TI-OpenLink/hostap.git;protocol=git \
            file://defconfig \
@@ -25,7 +25,6 @@ SRC_URI = "git://github.com/TI-OpenLink/hostap.git;protocol=git \
            file://wpa_supplicant.conf \
            file://fi.epitest.hostap.WPASupplicant.service \
            file://fi.w1.wpa_supplicant1.service \
-           file://kill_wpa_supplicant.sh \
           "
 
 S = "${WORKDIR}/git/wpa_supplicant"
@@ -33,7 +32,7 @@ S = "${WORKDIR}/git/wpa_supplicant"
 PACKAGES_prepend = "wpa-supplicant-passphrase wpa-supplicant-cli "
 FILES_wpa-supplicant-passphrase = "/usr/sbin/wpa_passphrase"
 FILES_wpa-supplicant-cli = "/usr/sbin/wpa_cli"
-FILES_${PN} += " /usr/share/dbus-1/system-services/* /usr/sbin/kill_wpa_supplicant.sh"
+FILES_${PN} += " /usr/share/dbus-1/system-services/*"
 
 #we introduce MY_ARCH to get 'armv5te' as arch instead of the misleading 'arm' on armv5te builds
 MY_ARCH := "${PACKAGE_ARCH}"
@@ -86,8 +85,6 @@ do_install () {
 	install -m 644 ${WORKDIR}/wpa_supplicant.conf ${D}/etc
 	install -m 644 ${WORKDIR}/fi.epitest.hostap.WPASupplicant.service ${D}/usr/share/dbus-1/system-services
 	install -m 644 ${WORKDIR}/fi.w1.wpa_supplicant1.service ${D}/usr/share/dbus-1/system-services
-
-	install -m 755 ${WORKDIR}/kill_wpa_supplicant.sh ${D}${sbindir}
 }
 
 pkg_postinst_wpa-supplicant () {
