@@ -17,6 +17,7 @@ COMPATIBLE_MACHINE = "ti33x|omap3"
 # PSPREL and UVER are used by arago-source-ipk.conf
 PSPREL = "05.07.00.00"
 UVER = "2013.01.01"
+###################################################
 
 DEFAULT_PREFERENCE = "-1"
 
