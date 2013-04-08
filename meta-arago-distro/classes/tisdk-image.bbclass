@@ -55,6 +55,12 @@ SECONDARY_BOOTLOADER_NAME ?= "MLO-${MACHINE}"
 # it differs from some of the default manifest code in oe-core.
 SW_MANIFEST_FILE ?= "${IMAGE_ROOTFS}/docs/software_manifest.htm"
 
+# If EXTRA_TISDK_PREBUILT is defined, a set of prebuilt images will be
+# copied onto the final /board-support/prebuilt-images/ directory. This
+# is necessary for images other than the ARM bootloaders, such as the
+# DSP UBL and firmware images.
+EXTRA_TISDK_PREBUILT ?= ""
+
 # helper function for generating a set of strings based on a list.  Taken
 # from the image.bbclass.
 def string_set(iterable):
@@ -538,6 +544,19 @@ do_sdk_image () {
             echo "Could not find the secondary bootloader image"
             return 1
         fi
+    fi
+
+    # Add the EXTRA_TISDK_PREBUILT images should there be any. These
+    # should be in the deploy directory already. Verify first that
+    # the file actually exists.
+    # Use -L to copy the actual contents of symlinks instead of just
+    # the links themselves.
+    if [ "${EXTRA_TISDK_PREBUILT}" != "" ]
+    then
+        for img in ${EXTRA_TISDK_PREBUILT}
+        do
+            cp -Lf ${DEPLOY_DIR_IMAGE}/${img} ${prebuilt_dir}/
+        done
     fi
 
     # Add the EXTRA_TISDK_FILES contents if they exist
