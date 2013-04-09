@@ -13,6 +13,7 @@ HOST_CLEANUP_PACKAGES = ""
 TOOLCHAIN_CLEANUP_PACKAGES = "libgnutls-dev libgnutls-extra26 libgnutls-openssl27 libtasn1-dev"
 
 SECONDARY_BOOTLOADER_NAME_omapl137 = ""
+EXTRA_TISDK_PREBUILT = "ubl_da830evm_development_456MHz.bin pa_ubl_da830evm_i12_default.bin"
 
 # List of target side images to build for the SDK
 TARGET_IMAGES = "arago-base-tisdk-image tisdk-rootfs-image"
