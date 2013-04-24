@@ -12,7 +12,7 @@ OOBE = ""
 EXTRA_APPLICATIONS = "\
     streamapp \
     gst-plugin-tipafsink \
-    ti-dsplink-module \
+    kernel-module-dsplinkk \
     pa-image-i12nonip \
     pa-utils \
     vinjey-audio-codecs \
